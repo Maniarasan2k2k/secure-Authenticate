@@ -12,7 +12,7 @@ const app = express();
 const port = process.env.PORT
 connectDB()
 
-const allowedOrigins = ['https://authenticate-mnau-ef3m6jh1h-maniarasan2k2ks-projects.vercel.app','http://localhost:5173'];
+const allowedOrigins = ['http://localhost:5173','https://https://authenticate-jzes12k00-maniarasan2k2ks-projects.vercel.app'];
 
 app.use(express.json());
 app.use(cookieParser());
