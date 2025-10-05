@@ -4,38 +4,27 @@ import 'dotenv/config';
 import cookieParser from "cookie-parser";
 import connectDB from "./config/mongodb.js";
 
+
 import authRouter from './routes/authRoutes.js'
 import userRouter from "./routes/userRoutes.js";
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT
+connectDB()
 
-// Connect MongoDB
-connectDB();
-
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://authenticate-mnau-ef3m6jh1h-maniarasan2k2ks-projects.vercel.app"
-];
+const allowedOrigins = ['https://authenticate-mnau-ef3m6jh1h-maniarasan2k2ks-projects.vercel.app','http://localhost:5173'];
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({origin:allowedOrigins, credentials: true, methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]}))
 
-// ✅ Proper CORS setup
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  })
-);
+// Api Endpoints 
 
-// ✅ API Endpoints
-app.get("/", (req, res) => {
-  res.send("API Working ✅");
-});
+app.get("/",(req,res)=>{
+    res.send("Api Working")
+})
+app.use('/api/auth',authRouter )
+app.use('/api/user',userRouter )
 
-app.use("/api/auth", authRouter);
-app.use("/api/user", userRouter);
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(port, ()=>{console.log(`Start on the port is ${port}`)})
