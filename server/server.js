@@ -10,10 +10,10 @@ import userRouter from "./routes/userRoutes.js";
 
 const app = express();
 const port = process.env.PORT
+const frontEnd = process.env.APPLICATION_URL
 connectDB()
 
-const allowedOrigins = ['http://localhost:5173',
- "https://secure-auth-eight.vercel.app",'https://authenticate-topaz.vercel.app'];
+const allowedOrigins = frontEnd;
 
 app.use(express.json());
 app.use(cookieParser());
