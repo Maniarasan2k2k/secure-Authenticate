@@ -23,4 +23,4 @@
 ---
 
 📸 **Author:** Maniarasan K  
-🔗 **GitHub:** [https://github.com/maiarasan2k](https://github.com/maiarasan2k)
+🔗 **GitHub:** [https://github.com/Maniarasan2k2k](https://github.com/Maniarasan2k2k)
